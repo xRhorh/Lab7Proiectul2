@@ -1,0 +1,14 @@
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\bin\Debug\ObjectWCF.dll.config
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\bin\Debug\ObjectWCF.dll
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\bin\Debug\ObjectWCF.pdb
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\bin\Debug\APIandModelLibrary.dll
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\bin\Debug\EntityFramework.dll
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\bin\Debug\APIandModelLibrary.pdb
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\bin\Debug\APIandModelLibrary.dll.config
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\bin\Debug\EntityFramework.xml
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\obj\Debug\ObjectWCF.csprojAssemblyReference.cache
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\obj\Debug\ObjectWCF.csproj.CopyComplete
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\obj\Debug\ObjectWCF.dll
+C:\Users\Pintilii\source\repos\MyPhotos\ObjectWCF\obj\Debug\ObjectWCF.pdb
