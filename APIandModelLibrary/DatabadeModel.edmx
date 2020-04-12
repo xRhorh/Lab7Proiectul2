@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DatabadeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DatabadeModelStoreContainer">
+    <EntitySet Name="Imagines" EntityType="DatabadeModel.Store.Imagines" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProprietateImagines" EntityType="DatabadeModel.Store.ProprietateImagines" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MediaLists" EntityType="DatabadeModel.Store.MediaLists" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ImagineProprietateImagine" Association="DatabadeModel.Store.ImagineProprietateImagine">
+      <End Role="Imagine" EntitySet="Imagines" />
+      <End Role="ProprietateImagine" EntitySet="ProprietateImagines" />
+    </AssociationSet>
+    <AssociationSet Name="MediaListImagine" Association="DatabadeModel.Store.MediaListImagine">
+      <End Role="MediaList" EntitySet="MediaLists" />
+      <End Role="Imagine" EntitySet="Imagines" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Imagines">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullPath" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Available" Type="tinyint" Nullable="false" DefaultValue="0" />
+    <Property Name="MediaList_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProprietateImagines">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImagineId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MediaLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NrImagini" Type="int" Nullable="false" />
+    <Property Name="NrFilme" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ImagineProprietateImagine">
+    <End Role="Imagine" Type="DatabadeModel.Store.Imagines" Multiplicity="1" />
+    <End Role="ProprietateImagine" Type="DatabadeModel.Store.ProprietateImagines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Imagine">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProprietateImagine">
+        <PropertyRef Name="ImagineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MediaListImagine">
+    <End Role="MediaList" Type="DatabadeModel.Store.MediaLists" Multiplicity="1" />
+    <End Role="Imagine" Type="DatabadeModel.Store.Imagines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MediaList">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Imagine">
+        <PropertyRef Name="MediaList_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DatabadeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DatabadeModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Imagines" EntityType="DatabadeModel.Imagine" />
+          <EntitySet Name="ProprietateImagines" EntityType="DatabadeModel.ProprietateImagine" />
+          <AssociationSet Name="ImagineProprietateImagine" Association="DatabadeModel.ImagineProprietateImagine">
+            <End Role="Imagine" EntitySet="Imagines" />
+            <End Role="ProprietateImagine" EntitySet="ProprietateImagines" />
+          </AssociationSet>
+          <EntitySet Name="MediaLists" EntityType="DatabadeModel.MediaList" />
+          <AssociationSet Name="MediaListImagine" Association="DatabadeModel.MediaListImagine">
+            <End Role="MediaList" EntitySet="MediaLists" />
+            <End Role="Imagine" EntitySet="Imagines" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Imagine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullPath" Type="String" Nullable="false" />
+          <Property Name="Available" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="None" DefaultValue="0" />
+          <NavigationProperty Name="ProprietateImagines" Relationship="DatabadeModel.ImagineProprietateImagine" FromRole="Imagine" ToRole="ProprietateImagine" />
+          <NavigationProperty Name="MediaList" Relationship="DatabadeModel.MediaListImagine" FromRole="Imagine" ToRole="MediaList" />
+        </EntityType>
+        <EntityType Name="ProprietateImagine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Imagine" Relationship="DatabadeModel.ImagineProprietateImagine" FromRole="ProprietateImagine" ToRole="Imagine" />
+          <Property Name="ImagineId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ImagineProprietateImagine">
+          <End Type="DatabadeModel.Imagine" Role="Imagine" Multiplicity="1" />
+          <End Type="DatabadeModel.ProprietateImagine" Role="ProprietateImagine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Imagine">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProprietateImagine">
+              <PropertyRef Name="ImagineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MediaList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NrImagini" Type="Int32" Nullable="false" />
+          <Property Name="NrFilme" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Imagines" Relationship="DatabadeModel.MediaListImagine" FromRole="MediaList" ToRole="Imagine" />
+        </EntityType>
+        <Association Name="MediaListImagine">
+          <End Type="DatabadeModel.MediaList" Role="MediaList" Multiplicity="1" />
+          <End Type="DatabadeModel.Imagine" Role="Imagine" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabadeModelStoreContainer" CdmEntityContainer="DatabadeModelContainer">
+    <EntitySetMapping Name="Imagines">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabadeModel.Imagine)">
+        <MappingFragment StoreEntitySet="Imagines">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullPath" ColumnName="FullPath" />
+          <ScalarProperty Name="Available" ColumnName="Available" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProprietateImagines">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabadeModel.ProprietateImagine)">
+        <MappingFragment StoreEntitySet="ProprietateImagines">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImagineId" ColumnName="ImagineId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MediaLists">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabadeModel.MediaList)">
+        <MappingFragment StoreEntitySet="MediaLists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NrImagini" ColumnName="NrImagini" />
+          <ScalarProperty Name="NrFilme" ColumnName="NrFilme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MediaListImagine" TypeName="DatabadeModel.MediaListImagine" StoreEntitySet="Imagines">
+      <EndProperty Name="MediaList">
+        <ScalarProperty Name="Id" ColumnName="MediaList_Id" />
+      </EndProperty>
+      <EndProperty Name="Imagine">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="74cd29a680d74263b164136a21b96128" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabadeModel.Imagine" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabadeModel.ProprietateImagine" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabadeModel.MediaList" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DatabadeModel.ImagineProprietateImagine" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabadeModel.MediaListImagine" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
