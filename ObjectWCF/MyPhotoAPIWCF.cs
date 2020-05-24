@@ -40,6 +40,12 @@ namespace ObjectWCF
             return this.api_obj.FileIsAvailable(key_image);
         }
 
+        List<string> InterfaceMyPhotosAPI.GetAllProperties()
+        {
+            this.api_obj = new MyPhotosAPI();
+            return this.api_obj.GetAllProperties();
+        }
+
         List<FileReprezentation> InterfaceMyPhotosAPI.GetPhotoNames()
         {
             this.api_obj = new MyPhotosAPI();

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace APIandModelLibrary
 {
@@ -44,18 +45,19 @@ namespace APIandModelLibrary
                 return;
             }
 
-            if(!File.Exists(path))
+            /*if(!File.Exists(path))
             {
                 Console.WriteLine("You got to give a valid file path!");
                 return;
-            }
+            }*/
 
             using (var contextDB = new DatabadeModelContainer())
             {
                 var user_table = contextDB.MediaLists.First();
                 var user_photo = new Imagine()
                 {
-                    FullPath = Path.GetFullPath(path),
+                    //FullPath = Path.GetFullPath(path),
+                    FullPath = path,
                     Available = 1,
                     MediaList = user_table
                 };
@@ -270,6 +272,28 @@ namespace APIandModelLibrary
             }
 
             return result_list;
+        }
+
+        public List<String> GetAllProperties()
+        {
+            SortedSet<string> result_set = new SortedSet<string>();
+
+            using (var contextDB = new DatabadeModelContainer())
+            {
+                var all_properties = contextDB.ProprietateImagines;
+                foreach (var property in all_properties)
+                {
+                    result_set.Add(property.Title);
+                }
+            }
+
+            List<String> result = new List<String>();
+            foreach (var property in result_set)
+            {
+                result.Add(property);
+            }
+
+            return result;
         }
     }
 }

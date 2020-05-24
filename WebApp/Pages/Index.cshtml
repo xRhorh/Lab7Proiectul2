@@ -1,0 +1,78 @@
+﻿@page
+@model WebApp.Pages.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="search_string"> Search Value: </label>
+                <input asp-for="search_string" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Properties
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.index_Properties)
+        {
+            <tr style="font-size:small">
+                <td>
+                    @Html.DisplayFor(modelItem => item)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    Au fost gasite @Model.files_list.Count imagini.
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Image
+            </th>
+            <th>
+                Keywords --- Descriptions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int pos = 0; pos < Model.files_list.Count; pos++)
+        {
+            <tr style="font-size:small">
+                <td>
+                    <img src="@Model.files_list[pos].Pathk__BackingField" alt="A image" />
+                </td>
+                <td>
+                    @foreach (var property in Model.properties_list[pos]) {
+                    <p>
+                        @property.Titlek__BackingField
+                        <->
+                        @property.Descriptionk__BackingField
+                    </p>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

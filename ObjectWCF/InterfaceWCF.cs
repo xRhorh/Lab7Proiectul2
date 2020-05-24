@@ -41,5 +41,8 @@ namespace ObjectWCF
 
         [OperationContract]
         List<FileReprezentation> SearchFilesByType(string title);
+
+        [OperationContract]
+        List<String> GetAllProperties();
     }
 }

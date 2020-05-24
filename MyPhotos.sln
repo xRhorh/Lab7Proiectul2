@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIandModelLibrary", "APIandModelLibrary\APIandModelLibrary.csproj", "{DDF05881-DFF8-436D-8980-49A917D9701D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{C73D6DAC-C630-4CEA-AA98-E080F5F28D82}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIApp", "GUIApp\GUIApp.csproj", "{1B6B0817-89A4-4FA3-9932-4AA33E3FF42B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectWCF", "ObjectWCF\ObjectWCF.csproj", "{59138BDB-8FE7-4B47-91AD-1814942EA341}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostWCF", "HostWCF\HostWCF.csproj", "{D693A050-6F21-4C6F-8932-26B6E69CCAC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{6766F44B-9BA8-4330-9130-4C3CEEB17985}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +39,10 @@ Global
 		{D693A050-6F21-4C6F-8932-26B6E69CCAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D693A050-6F21-4C6F-8932-26B6E69CCAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D693A050-6F21-4C6F-8932-26B6E69CCAC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6766F44B-9BA8-4330-9130-4C3CEEB17985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6766F44B-9BA8-4330-9130-4C3CEEB17985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6766F44B-9BA8-4330-9130-4C3CEEB17985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6766F44B-9BA8-4330-9130-4C3CEEB17985}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
